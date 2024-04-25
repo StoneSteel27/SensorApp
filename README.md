@@ -19,6 +19,9 @@ $ python sensor-server.py
 ```
 - Obtain your server's local IP address and enter in the App to Start the Data Stream.
 
+## App's Preview
+<img src="https://raw.githubusercontent.com/StoneSteel27/SensorApp/main/pictures/App-UI.jpeg" width="300">
+
 ## Building From Source
 - First, Clone the Repo
 ```bash
