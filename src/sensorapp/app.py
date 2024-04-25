@@ -74,7 +74,7 @@ class AccelerometerUIListener(dynamic_proxy(SensorEventListener)):
                     JavaFunc(self.app.set_values, t,t,t))
                 self.j = 1
             try:
-                self.app.socket.send(f"{x:.2f},{y:.2f},{z:.2f}".rjust(30).encode("utf-8"))
+                self.app.socket.send(f"{time.time()}:{x},{y},{z}".rjust(100).encode("utf-8"))
             except Exception as e:
                 self.app._impl.native.runOnUiThread(JavaFunc(self.app.stop_connection))
                 message = str(e).split("] ")[1]
@@ -167,7 +167,12 @@ class SensorApp(toga.App):
 
         self.content.add(self.x_box, self.y_box, self.z_box)
         self.content_box.add(self.content_label, self.content)
-
+        info_box = toga.Box(style=Pack(direction=COLUMN, padding=(0, 20)))
+        info_label1 = toga.Label("*Speed of Sensor is reduced to save App ",style=Pack(color="orange", text_align=LEFT,font_size=9))
+        info_label2 = toga.Label("resources and will be increased while Streaming",
+                                 style=Pack(color="orange", text_align=LEFT, font_size=9))
+        info_box.add(info_label1, info_label2)
+        self.content_box.add(info_box)
         self.ip_box = toga.Box(style=Pack(direction=COLUMN, padding=(0, 20)))
         self.ip_label = toga.Label("IP Address of Server :", style=Pack(font_size=16, padding_top=10, color="white"))
         self.ip_input = toga.TextInput(placeholder="Enter your Server IP",
@@ -191,8 +196,7 @@ class SensorApp(toga.App):
         self.main_window.show()
 
     def navigate(self, widget):
-        time.sleep(10)
-        print("Hello World!")
+        self.make_toast("Not Implemented yet")
 
     async def handle_client(self, widget):
         t = Thread(T(self))
