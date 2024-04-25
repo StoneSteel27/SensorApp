@@ -10,9 +10,14 @@ A Sensor Value Displaying/Streaming Android App built with Beeware tools.
 - Real-Time Display of Sensor Data
 - Fast Real-Time Sensor Data Streaming via TCP Sockets
 
-## Background
-- Sensor-App was created to aid Computer Programmers, Data Scientists with usage of Real-Time Sensor Data, for various applications.
-- It was also made as a Introductory Project of using Tools of `Beeware`.
+## Data Stream Setup
+- This Repository contains `sensor-server.py` python file which provides a simple way for creating the Server.
+- The Communication between the App and the Server will happen on port-`5678`.
+- Start the server using:
+```bash
+$ python sensor-server.py
+```
+- Obtain your server's local IP address and enter in the App to Start the Data Stream.
 
 ## Building From Source
 - First, Clone the Repo
@@ -29,3 +34,7 @@ $ pip install briefcase
 $ briefcase build android
 ```
 - Finally, the last line of build process, will contain the path to the `apk` file
+
+## Background
+- Sensor-App was created to aid Computer Programmers, Data Scientists with Real-Time Sensor Data, for various applications like VR and AR.
+- It was also made as a Introductory Project of using Tools of `Beeware`.
